@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:600&display=swap');
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.trans {
+  transform: none;
+}
+
+.no-trans {
+  transform:matrix(-1, 0, 0, 1, 400, 0);
+}
+
+.nav-trans {
+  transform:matrix(1, 0, 0, 1, 0, 120);
+}
+
