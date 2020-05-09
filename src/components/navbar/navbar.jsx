@@ -154,7 +154,7 @@ export const NavBar = () => {
                     {/* {submitted && <p className='text-green-500 mb-2'>Registered Successfully</p>}
                     {errors && <p className='text-red-500 mb-2'>{errors.message}</p>} */}
 
-                    <Input  readOnly  value = '$ 2000'   name='amount' type='text' label='Amount' icon = 'credit-card'/>
+                    <Input  readOnly  value = {`$ ${state.total}`}   name='amount' type='text' label='Amount' icon = 'credit-card'/>
 
                     <Input onChange={handleChange} value = {name} name='name' type='text' label='Full Name' icon = 'address-book' required/>
                     
