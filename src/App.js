@@ -22,10 +22,10 @@ function App() {
           {/* <AuthenticatedRoute  path= ''>
             <Home />
           </AuthenticatedRoute> */}
-           <Route path='/orders'>
+           {/* <Route path='/orders'>
             <Orders />
-          </Route>
-          <Route path='/'>
+          </Route> */}
+          <Route>
             <Home />
           </Route>
          

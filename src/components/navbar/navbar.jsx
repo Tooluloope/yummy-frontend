@@ -93,7 +93,7 @@ export const NavBar = () => {
                 </div>
                 <nav className={`${isOpen? "block" : "hidden "} duration-500 px-2 pt-2 pb-4 sm:flex sm:p-0`}>
                     <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/'>Home </Link>
-                    { isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/orders'>{fullname ? fullname : null} </Link>}
+                    { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/orders'>Orders </Link>}
                     { isAuthenticated && <Link onClick = {() => Logout()} className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/login'>logout </Link>}
                     { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/login'>Login </Link>}
                     { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/signup'>Sign Up </Link>}
