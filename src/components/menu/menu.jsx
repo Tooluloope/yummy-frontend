@@ -23,7 +23,7 @@ export const Menu = () => {
     return (
         <>
              <h1 className="text-center text-lg pt-8 pb-4">  The Pizza Menu </h1>
-             <SearchBar searchParam = {setSearchParam} />
+             <SearchBar name='search' label='Search' searchParam = {setSearchParam} />
              <div className=" p-4 sm:flex sm:flex-wrap items-center justify-center container mx-auto">
 
              {filteredData.length > 0 ? filteredData.map( filter => <MenuItem key={filter.name} pizza={filter} />)

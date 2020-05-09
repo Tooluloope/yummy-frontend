@@ -14,7 +14,7 @@ export const MenuItem = ({pizza}) => {
 
     return (
         <div className=" text-center py-4 sm:w-1/2 md:w-1/3 px-4">
-            <img src={url} alt={name}/>
+            <img className=" h-auto m-auto" src={url} alt={name}/>
             <p className='font-semibold pt-4 pb-2'>{name}</p>
             <p className="pb-2">$ {price}</p>
 

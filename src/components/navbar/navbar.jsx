@@ -83,7 +83,7 @@ export const NavBar = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick = {() => setIsOpen(!isOpen)} className='block text-white hover:text-white focus:text-white focus:outline-none sm:hidden '>
+                        <button type="button" onClick = {() => setIsOpen(!isOpen)} className='block text-white hover:text-white focus:text-white focus:outline-none sm:hidden '>
                         <svg className="  h-6 w-6 fill-current" viewBox="0 0 24 24">
                             {isOpen && <path fillRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>}
                             {!isOpen && <path  fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>}
@@ -104,7 +104,7 @@ export const NavBar = () => {
 
             </header>
 
-            <div style={{borderLeft: "1px solid black"}} className={ `${isCartOpen ? "trans" : "no-trans "}  h-screen bg-white fixed bg-white z-50 overflow-auto top-0 right-0 w-75 sm:w-100 block transition-transform duration-500 ease-in-out`}>
+            <div style={{borderLeft: "1px solid black"}} className={ `${isCartOpen ? "trans" : "no-trans "}  h-screen bg-white fixed bg-white z-40 overflow-auto top-0 right-0 w-75 sm:w-100 block transition-transform duration-500 ease-in-out`}>
                 <div className=" sm:py-9 py-6 px-4 mb-5 flex justify-between items-center bg-gray-900">
                     <h3 className="text-white uppercase">Shopping Cart</h3>
                     <button className="bg-transparent border-none text-white text-sm flex items-center outline-none" onClick = {() => setIsCartOpen(false)}>
