@@ -11,6 +11,9 @@ export const ButtonAuth = ({value, className, type,handleClick } ) => {
     );
 };
 
+
+
+
 export const Button = ({value, type, handleClick,  ...props} ) => {
 
     return(
@@ -24,6 +27,9 @@ export const Button = ({value, type, handleClick,  ...props} ) => {
         
     );
 };
+
+
+
 
 export const Input = ({name, label, type, icon, onChange, value , ...props}) => {
   
@@ -44,6 +50,9 @@ export const Input = ({name, label, type, icon, onChange, value , ...props}) => 
             
                
 );};
+
+
+
 
 Input.propTypes = {
     name: PropTypes.string.isRequired,

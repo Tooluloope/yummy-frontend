@@ -68,6 +68,7 @@ export const NavBar = () => {
 
     return (
         <>
+        {/* Main Nav Bar Header */}
             <header className='bg-green-600 sm:flex  sm:items-center sm:px-4 sm:py-3 flex-wrap'>
                 <div className='flex justify-between items-center px-4 py-3 flex-grow'>
                     <div>
@@ -107,6 +108,9 @@ export const NavBar = () => {
                 </nav>
 
             </header>
+
+
+            {/*  Shopping Cart Side Bar Header */}
 
             <div style={{borderLeft: "1px solid black"}} className={ `${isCartOpen ? "trans" : "no-trans "}  h-screen bg-white fixed bg-white z-40 overflow-auto top-0 right-0 w-75 sm:w-100 block transition-transform duration-500 ease-in-out`}>
                 <div className=" sm:py-9 py-6 px-4 mb-5 flex justify-between items-center bg-gray-900">
@@ -148,6 +152,8 @@ export const NavBar = () => {
                     </div>
                 </>) : null}
             </div>
+
+            {/*  Checkout Form Side Bar Header */}
             
             <div style={{borderLeft: "1px solid black"}} className={ `${isFormOpen ? "trans" : "no-trans"} h-screen bg-white fixed bg-white z-50 overflow-auto top-0 right-0 w-75 sm:w-100 block transition-transform duration-500 ease-in-out`}>                
                 <div className=" sm:py-9 py-6 px-4 mb-5 flex justify-between items-center bg-gray-900">
