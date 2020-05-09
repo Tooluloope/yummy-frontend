@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { userContext } from "../../states/auth/auth.context";
 import { Input, Button } from "../inputs/input";
@@ -97,12 +97,12 @@ export const NavBar = () => {
                     </div>
                 </div>
                 <nav className={`${isOpen? "block" : "hidden "} duration-500 px-2 pt-2 pb-4 sm:flex sm:p-0`}>
-                    <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/'>Home </Link>
-                    { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/orders'>Orders </Link>}
-                    { isAuthenticated && <Link onClick = {() => Logout()} className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/login'>logout </Link>}
-                    { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/login'>Login </Link>}
-                    { !isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/signup'>Sign Up </Link>}
-                    { isAuthenticated && <Link className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400' to='/signup'>{fullname ? fullname : null} </Link>}
+                    <NavLink exact activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/'>Home </NavLink>
+                    { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/orders'>Orders </NavLink>}
+                    { isAuthenticated && <NavLink activeClassName="bg-green-400" onClick = {() => Logout()} className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/login'>logout </NavLink>}
+                    { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/login'>Login </NavLink>}
+                    { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/signup'>Sign Up </NavLink>}
+                    { isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/signup'>{fullname ? fullname : null} </NavLink>}
 
 
                 </nav>

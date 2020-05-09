@@ -231,9 +231,9 @@ const Orders = () => {
                         </div>
                     </div>
 
-                    <div className="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative w-auto"
-                        style={{height: "405px"}}>
-                        <table className="border-collapse table-auto w-full whitespace-no-wrap bg-white m-auto table-striped relative ">
+                    <div className="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative w-auto h-full sm:h-full">
+                        
+                        <table className="border-collapse table-auto w-full whitespace-no-wrap bg-white m-auto table-striped relative  h-full">
                             <thead>
                                 <tr className="text-left">
                                     <th className="py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100">

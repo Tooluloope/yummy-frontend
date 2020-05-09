@@ -13,7 +13,7 @@ export const Home = () =>(
     <Store>
         <NavBar />
 
-            <Route path="/orders">
+            <Route exact path="/orders">
                 <Orders  />
             </Route>
             <Route exact path="/" component={Menu} />
