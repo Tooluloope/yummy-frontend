@@ -3,7 +3,7 @@ import { MenuItem } from "./menu-item";
 import data from "../../data";
 import SearchBar from "../search/search";
 
-export const Menu = () => {
+const Menu = () => {
 
     // Search Parameter for the filtered data
     const [searchParam, setSearchParam] = useState("");
@@ -33,3 +33,4 @@ export const Menu = () => {
         </>
     );
 };
+export default Menu;

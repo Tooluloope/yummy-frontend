@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { cartContext } from "../../states/cart/cart";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 
 
 
@@ -14,7 +17,7 @@ export const MenuItem = ({pizza}) => {
 
     return (
         <div className=" text-center py-4 sm:w-1/2 md:w-1/3 px-4">
-            <img className=" h-auto m-auto" src={url} alt={name}/>
+            <LazyLoadImage effect="blur" className=" h-auto m-auto" src={url} alt={name}/>
             <p className='font-semibold pt-4 pb-2'>{name}</p>
             <p className="pb-2">$ {price}</p>
 

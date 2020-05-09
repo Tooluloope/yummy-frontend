@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./order.css";
 
-export const Orders = () => {
+const Orders = () => {
 
     const headings = [
         {
@@ -40,7 +40,6 @@ export const Orders = () => {
 
     }, []);
 
-    console.log(selectedRows);
 
 
     const users =  [{
@@ -291,8 +290,9 @@ export const Orders = () => {
                 </div>
 
                 
-            </div>
-            
+            </div>            
         </>
     );
 };
+
+export default Orders;

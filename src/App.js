@@ -25,7 +25,7 @@ function App() {
             <Orders />
           </Route> */}
           <Route>
-            <Home />
+            <Home exact path='/'/>
           </Route>
          
           
