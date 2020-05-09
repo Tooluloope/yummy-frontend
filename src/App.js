@@ -6,7 +6,6 @@ import { Login } from "./pages/auth/login";
 import { Home } from "./pages/homepage";
 // import { AuthenticatedRoute } from "./components/routes/authenticatedRoutes";
 import { UnAuthenticatedRoute } from "./components/routes/unauthenticatedRoutes";
-import { Orders } from "./pages/orders";
 
 function App() {
 

@@ -48,6 +48,7 @@ export const NavBar = () => {
         setIsFormOpen(true);
     };
     const handleSubmit = (e) => {
+        
         e.preventDefault();
         setIsFormOpen(false);
         setIsCartOpen(false);
@@ -60,6 +61,7 @@ export const NavBar = () => {
 
     // Remember to take care of {submitted, errors,}
     const { user: { name, address, email }} = data;
+    const enabled = name.length > 0 && address.length > 0 && email.length > 0;
 
 
     return (
@@ -163,7 +165,7 @@ export const NavBar = () => {
                     <Input onChange={handleChange} value = {address}    name='address' type='text' label='Address' icon = 'map-marker' required/>
 
 
-                    <Button handleClick = {handleSubmit} value="Submit &rarr;" type='submit' />
+                    <Button handleClick = {handleSubmit} value="Submit &rarr;" type='submit' disabled={!enabled} />
 
 
                 </form>
