@@ -97,7 +97,6 @@ export const removeAll = () => {
 };
 
 // Deleivery Fee is USD 15
-
 const getTotal = (arr, deliveryFee = 15 ) => 
     
     arr.reduce((acc, currItem) => {
@@ -115,7 +114,12 @@ export const usdToEuros = (amount) => parseFloat(amount * 0.926238).toFixed(2);
 const stateToLocalStorage = (data) => {
     localStorage.setItem("state", JSON.stringify(data));
 };
+
+
+
 const removeStateFromLocalStorage = () => localStorage.removeItem("state");
+
+
 
 export const getStateFromLocalStorage = () => {
 
