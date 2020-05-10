@@ -32,7 +32,7 @@ export const querystring = (name, url = window.location.href) => {
   
     const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i");
     const results = regex.exec(url);
-  
+    
     if (!results) {
       return null;
     }
@@ -40,5 +40,6 @@ export const querystring = (name, url = window.location.href) => {
       return "";
     }
   
+    
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   };

@@ -1,6 +1,7 @@
 import  {  useState, useEffect, useContext } from "react";
 import { userContext } from "../states/auth/auth.context";
 
+// Check if user is authenticated via local storage and returns a boolean value
 
 const useAuth = () => {
     const [isAuthenticated, setAuth] = useState(JSON.parse(localStorage.getItem("isAuthenticated")));
@@ -13,7 +14,6 @@ const useAuth = () => {
 
     },[isAuthFromState]);
 
-    // const {state: {isAuthenticated}} = useContext(userContext);
     return  isAuthenticated;
 
 };

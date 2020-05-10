@@ -4,10 +4,9 @@ import wave  from "../../assets/wave.png";
 import profile  from "../../assets/undraw_profile_pic_ic5t.svg";
 import "./auth.css";
 import { Input, ButtonAuth } from "../../components/inputs/input";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { userContext } from "../../states/auth/auth.context";
-import { querystring } from "../../components/routes/authenticatedRoutes";
 
 
 
@@ -24,7 +23,6 @@ export const Login = () => {
     };
     const [data, setData] = useState(initialState);
     const {dispatch} = useContext(userContext);
-    const history = useHistory();
 
 
     
@@ -64,14 +62,9 @@ export const Login = () => {
             const result = await res.data;
 
             if (status === 200 | status === 201) {
-
                 dispatch({type: "LOGIN_SUCCESS", payload: result});
 
                 setData({...initialState, submitted: true});
-
-                const redirect = querystring("redirect") || "/";
-                history.push(redirect);
-                
 
             }
             else {
