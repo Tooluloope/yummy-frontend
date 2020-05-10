@@ -132,16 +132,16 @@
     background: var(--peperoni);
   }
   
-  .p-1 {
+  .p-s1 {
     top: 10%;
     left: 35%;
   }
-  .p-2 {
+  .p-s2 {
     top: 38%;
     right: 16%;
   }
   
-  .p-3 {
+  .p-s3 {
     bottom: 10%;
     left: 26%;
   }
@@ -266,8 +266,4 @@
       height: 100px;
     }
   
-    
-    p {
-      font-size: 1em;
-    }
   }
