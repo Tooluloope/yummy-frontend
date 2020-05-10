@@ -121,7 +121,7 @@ export const NavBar = () => {
                     { isAuthenticated && <NavLink activeClassName="bg-green-400" onClick = {() => Logout()} className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/login'>logout </NavLink>}
                     { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/login'>Login </NavLink>}
                     { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/signup'>Sign Up </NavLink>}
-                    { isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/signup'>{fullname ? fullname : null} </NavLink>}
+                    { isAuthenticated && <p  className='block text-white px-2 py-1 font-semibold rounded  mr-3' >{fullname ? fullname : null} </p>}
 
 
                 </nav>
