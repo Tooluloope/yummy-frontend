@@ -1,153 +1,75 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./order.css";
+import useFetch from "../hooks/fetch";
+import Loader from "../components/loader/loader";
+import { formatDate } from "../components/utils";
+
+
+export const headings = [
+    {
+       "id": 1,
+        "key": "id",
+        "value": "Item ID"
+    },
+    {
+        "id": 5,
+         "key": "name",
+         "value": "Name"
+     },
+    {
+       "id": 2,
+        "key": "address",
+        "value": "Address"
+    },
+    {
+       "id": 3,
+        "key": "item",
+        "value": "No. Of Items"
+    },
+    {
+       "id": 4,
+        "key": "total",
+        "value": "Total Cost"
+        
+    },
+    {
+        "id": 6,
+         "key": "created_at",
+         "value": "Created At"
+     }
+];
 
 const Orders = () => {
-
-    const headings = [
-        {
-            "key": "userId",
-            "value": "User ID"
-        },
-        {
-            "key": "firstName",
-            "value": "Firstname"
-        },
-        {
-            "key": "lastName",
-            "value": "Lastname"
-        },
-        {
-            "key": "emailAddress",
-            "value": "Email"
-        },
-        {
-            "key": "gender",
-            "value": "Gender"
-        },
-        {
-            "key": "phoneNumber",
-            "value": "Phone"
-        }
-    ];
-    const [selectedRows, setSelectedRows] = useState([]);
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", "Token 6c0188d222527cae34b8f1943c8af2d7ee11ed8c71ec27cd412d3e84790d713f");
+    const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    };
+    const url = "https://yummy-pizzapi.herokuapp.com/api/orders/";
+    
+    let selectedRow = headings.map(heading => heading.key);
+    const [selectedRows, setSelectedRows] = useState(selectedRow);
     const [isOpen, setIsOpen] = useState(false);
+    const {data, error, isLoading} = useFetch(url, requestOptions);
+    const [searchParam, setSearchParam] = useState("");
+
+    if( isLoading || error || !data) {
+        return( 
+             <div>
+                 {isLoading  ?  <Loader /> : error}
+             </div>
+        );
+    }
+    const filteredData  = data.length >0 ? data.filter(pizza => pizza.name.toLowerCase().includes(searchParam.toLowerCase())) : [];
 
 
-    useEffect(() => {
-        let selectedRow = headings.map(heading => heading.key);
-
-        setSelectedRows(selectedRow);
-
-    }, []);
+    console.log(data, isLoading, error);
 
 
 
-    const users =  [{
-        "userId": 1,
-        "firstName": "Cort",
-        "lastName": "Tosh",
-        "emailAddress": "ctosh0@github.com",
-        "gender": "Male",
-        "phoneNumber": "327-626-5542"
-    }, {
-        "userId": 2,
-        "firstName": "Brianne",
-        "lastName": "Dzeniskevich",
-        "emailAddress": "bdzeniskevich1@hostgator.com",
-        "gender": "Female",
-        "phoneNumber": "144-190-8956"
-    }, {
-        "userId": 3,
-        "firstName": "Isadore",
-        "lastName": "Botler",
-        "emailAddress": "ibotler2@gmpg.org",
-        "gender": "Male",
-        "phoneNumber": "350-937-0792"
-    }, {
-        "userId": 4,
-        "firstName": "Janaya",
-        "lastName": "Klosges",
-        "emailAddress": "jklosges3@amazon.de",
-        "gender": "Female",
-        "phoneNumber": "502-438-7799"
-    }, {
-        "userId": 5,
-        "firstName": "Freddi",
-        "lastName": "Di Claudio",
-        "emailAddress": "fdiclaudio4@phoca.cz",
-        "gender": "Female",
-        "phoneNumber": "265-448-9627"
-    }, {
-        "userId": 6,
-        "firstName": "Oliy",
-        "lastName": "Mairs",
-        "emailAddress": "omairs5@fda.gov",
-        "gender": "Female",
-        "phoneNumber": "221-516-2295"
-    }, {
-        "userId": 7,
-        "firstName": "Tabb",
-        "lastName": "Wiseman",
-        "emailAddress": "twiseman6@friendfeed.com",
-        "gender": "Male",
-        "phoneNumber": "171-817-5020"
-    }, {
-        "userId": 8,
-        "firstName": "Joela",
-        "lastName": "Betteriss",
-        "emailAddress": "jbetteriss7@msu.edu",
-        "gender": "Female",
-        "phoneNumber": "481-100-9345"
-    }, {
-        "userId": 9,
-        "firstName": "Alistair",
-        "lastName": "Vasyagin",
-        "emailAddress": "avasyagin8@gnu.org",
-        "gender": "Male",
-        "phoneNumber": "520-669-8364"
-    }, {
-        "userId": 10,
-        "firstName": "Nealon",
-        "lastName": "Ratray",
-        "emailAddress": "nratray9@typepad.com",
-        "gender": "Male",
-        "phoneNumber": "993-654-9793"
-    }, {
-        "userId": 11,
-        "firstName": "Annissa",
-        "lastName": "Kissick",
-        "emailAddress": "akissicka@deliciousdays.com",
-        "gender": "Female",
-        "phoneNumber": "283-425-2705"
-    }, {
-        "userId": 12,
-        "firstName": "Nissie",
-        "lastName": "Sidnell",
-        "emailAddress": "nsidnellb@freewebs.com",
-        "gender": "Female",
-        "phoneNumber": "754-391-3116"
-    }, {
-        "userId": 13,
-        "firstName": "Madalena",
-        "lastName": "Fouch",
-        "emailAddress": "mfouchc@mozilla.org",
-        "gender": "Female",
-        "phoneNumber": "584-300-9004"
-    }, {
-        "userId": 14,
-        "firstName": "Rozina",
-        "lastName": "Atkins",
-        "emailAddress": "ratkinsd@japanpost.jp",
-        "gender": "Female",
-        "phoneNumber": "792-856-0845"
-    }, {
-        "userId": 15,
-        "firstName": "Lorelle",
-        "lastName": "Sandcroft",
-        "emailAddress": "lsandcrofte@google.nl",
-        "gender": "Female",
-        "phoneNumber": "882-911-7241"
-    }];
+
+    
 
     const handleFilter = (e) => {
         const value = e.target.value;
@@ -164,6 +86,8 @@ const Orders = () => {
         }        
     };
 
+    
+
 
     return(
         <>
@@ -176,7 +100,7 @@ const Orders = () => {
                     <div className="mb-4 flex justify-between items-center">
                         <div className="flex-1 pr-4">
                             <div className="relative md:w-1/3">
-                                <input type="search"
+                                <input onChange = {(e) => setSearchParam(e.target.value)}  type="search"
                                     className="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     placeholder="Search..." />
                                 <div className="absolute top-0 left-0 inline-flex items-center p-2">
@@ -215,8 +139,8 @@ const Orders = () => {
                                         className={` ${!isOpen ? "hidden" : null} z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden`}>
                                         
                                         
-                                        {headings.map(heading => 
-                                            <label key={heading.key}
+                                        {headings && headings.map(heading => 
+                                            <label key={heading.id}
                                                 className="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2">
                                                 <div className="text-teal-600 mr-3">
                                                     <input  value={heading.key} onChange={handleFilter} type="checkbox" className="form-checkbox focus:outline-none focus:shadow-outline" defaultChecked = {true}  />
@@ -248,40 +172,39 @@ const Orders = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                            {users.map(user => {
 
-                                    return(
-
-                                
-                                    <tr key={user.userId}>
+                            {filteredData && filteredData.map(order => {
+                                return(
+                                    <tr key={order.id}>
                                         <td className="border-dashed border-t border-gray-200 px-3">
                                             <label
                                                 className="text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
-                                                <input type="checkbox" className="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" name={user.userId}
+                                                <input type="checkbox" className="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" name={order.id}
                                                         />
                                             </label>
                                         </td>
-                                        {selectedRows.includes("userId") && <td className="border-dashed border-t border-gray-200 userId">
-                                            <span className="text-gray-700 px-6 py-3 flex items-center" >{user.userId}</span>
+                                        {selectedRows.includes("id") && <td className="border-dashed border-t border-gray-200 userId">
+                                            <span className="text-gray-700 px-6 py-3 flex items-center" >{order.id}</span>
                                         </td>}
-                                        {selectedRows.includes("firstName") &&<td className="border-dashed border-t border-gray-200 firstName">
-                                            <span className="text-gray-700 px-6 py-3 flex items-center" >{user.firstName}</span>
-                                        </td>}
-                                        {selectedRows.includes("lastName") && <td className="border-dashed border-t border-gray-200 lastName">
-                                            <span className="text-gray-700 px-6 py-3 flex items-center" x-text="user.lastName">{user.lastName}</span>
-                                        </td>}
-                                        {selectedRows.includes("emailAddress") && <td className="border-dashed border-t border-gray-200 emailAddress ">
+                                        {selectedRows.includes("name") &&<td className="border-dashed border-t border-gray-200 phoneNumber">
                                             <span className="text-gray-700 px-6 py-3 flex items-center"
-                                                >{user.emailAddress}</span>
+                                                >{order.name}</span>
                                         </td>}
-                                        {selectedRows.includes("gender") && <td className="border-dashed border-t border-gray-200 gender">
+                                        {selectedRows.includes("address") &&<td className="border-dashed border-t border-gray-200 firstName">
+                                            <span className="text-gray-700 px-6 py-3 flex items-center" >{order.address}</span>
+                                        </td>}
+                                        {selectedRows.includes("item") && <td className="border-dashed border-t border-gray-200 lastName">
+                                            <span className="text-gray-700 px-6 py-3 flex items-center" x-text="user.lastName">{order.item.length}</span>
+                                        </td>}
+                                        {selectedRows.includes("total") && <td className="border-dashed border-t border-gray-200 emailAddress ">
                                             <span className="text-gray-700 px-6 py-3 flex items-center"
-                                                >{user.gender}</span>
+                                                > $ {order.total}</span>
                                         </td>}
-                                        {selectedRows.includes("phoneNumber") &&<td className="border-dashed border-t border-gray-200 phoneNumber">
+                                        {selectedRows.includes("created_at") && <td className="border-dashed border-t border-gray-200 gender">
                                             <span className="text-gray-700 px-6 py-3 flex items-center"
-                                                >{user.phoneNumber}</span>
+                                                >{formatDate(order.created_at)}</span>
                                         </td>}
+                                        
                                     </tr>
                             );})}
                             </tbody>
@@ -293,6 +216,7 @@ const Orders = () => {
             </div>            
         </>
     );
+
 };
 
 export default Orders;

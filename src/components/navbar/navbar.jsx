@@ -6,7 +6,7 @@ import { userContext } from "../../states/auth/auth.context";
 import { Input, Button } from "../inputs/input";
 import { CartItem } from "./cart-item";
 import { cartContext } from "../../states/cart/cart";
-import {usdToEuros} from "../../states/cart/utils";
+import {usdToEuros} from "../utils";
 import Axios from "axios";
 
 

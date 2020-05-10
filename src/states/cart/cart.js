@@ -1,5 +1,5 @@
 import React, {createContext, useReducer} from "react";
-import {removeAll, addNewItem, removeItem, increaseItem,decreaseItem, getStateFromLocalStorage } from "./utils";
+import {removeAll, addNewItem, removeItem, increaseItem,decreaseItem, getStateFromLocalStorage } from "../../components/utils";
 import PropTypes from "prop-types";
 
 const initialState = getStateFromLocalStorage() ? getStateFromLocalStorage() : {
