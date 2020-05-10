@@ -56,7 +56,7 @@ export const NavBar = () => {
         const ids = state.items.map(item => `https://yummy-pizzapi.herokuapp.com/api/pizzas/${item.id}/`);
         const order = {...user, item:ids, total:state.total};
         try {
-            await Axios.post("https://mypizzapps.herokuapp.com/api/orders/", order);
+            await Axios.post("https://yummy-pizzapi.herokuapp.com/api/orders/", order);
             
             cartDispatch({type: "REMOVE_ALL"});
             setData({...data, errors: null, submitted: true});
