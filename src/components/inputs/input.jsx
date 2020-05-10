@@ -7,7 +7,7 @@ export const ButtonAuth = ({value, className, type,handleClick } ) => {
 
     return(
         
-        <input aria-pressed="false" role="button"  style={{borderRadius: "25px"}} type={type} className={className}  onClick={handleClick} value={value}></input>
+        <input aria-pressed="false" role="button"   style={{borderRadius: "25px"}} type={type} className={className}  onClick={handleClick} value={value}></input>
     );
 };
 
@@ -17,7 +17,7 @@ export const ButtonAuth = ({value, className, type,handleClick } ) => {
 export const Button = ({value, type, handleClick,  ...props} ) => {
 
     return(
-        <button aria-pressed="false" role="button" {...props} onClick={handleClick} type={type} className="text-base  undefined  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+        <button aria-pressed="false"  {...props} onClick={handleClick} type={type} className="text-base  undefined  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-green-700 hover:text-green-100 
             bg-green-100 
             text-green-700 

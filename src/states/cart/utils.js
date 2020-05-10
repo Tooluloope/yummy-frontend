@@ -1,5 +1,3 @@
-export const  deliveryFee =  parseInt("15");
-
 export const addNewItem = (state, item) => {
     let data = Object.create(state);
     
@@ -20,6 +18,7 @@ export const addNewItem = (state, item) => {
     const {items} = data;
     console.log(items);
     const total = getTotal(items);
+    stateToLocalStorage({items, total});
     return {items, total};   
 };
 
@@ -45,7 +44,9 @@ export const decreaseItem = (state, item) => {
         data.items = [...data.items];
     }
     const {items} = data;
-    const total = getTotal(items);
+    let deliveryFee = items.length < 1 ? 0 : 15;
+    const total = getTotal(items, deliveryFee);
+    stateToLocalStorage({items, total});
     return {items, total}; 
 
 };
@@ -64,24 +65,40 @@ export const increaseItem = (state, item) => {
 
     const {items} = data;
     const total = getTotal(items);
+    stateToLocalStorage({items, total});
     return {items, total}; 
 
 
 };
 
 export const removeItem = (state, item)=> {
+    
+
     let data = Object.create(state);
     // Check if item in cart
     let result = data.items.findIndex(({name}) => name === item.name);
     data.items = [...data.items];
     data.items.splice(result, 1);
     const {items} = data;
-    const total = getTotal(items);
+    let deliveryFee = items.length < 1 ? 0 : 15;
+    
+    const total = getTotal(items, deliveryFee);
+    stateToLocalStorage({items, total});
     return {items, total};
 
 };
+export const removeAll = () => {
 
-const getTotal = (arr) => 
+    removeStateFromLocalStorage();
+    return {
+        items: [],
+        total:0
+      };
+};
+
+// Deleivery Fee is USD 15
+
+const getTotal = (arr, deliveryFee = 15 ) => 
     
     arr.reduce((acc, currItem) => {
         
@@ -93,3 +110,15 @@ const getTotal = (arr) =>
 
     // 1 USD  -->  0.926238 EUR
 export const usdToEuros = (amount) => parseFloat(amount * 0.926238).toFixed(2);
+
+
+const stateToLocalStorage = (data) => {
+    localStorage.setItem("state", JSON.stringify(data));
+};
+const removeStateFromLocalStorage = () => localStorage.removeItem("state");
+
+export const getStateFromLocalStorage = () => {
+
+    const data = JSON.parse(localStorage.getItem("state"));
+    return data;
+};

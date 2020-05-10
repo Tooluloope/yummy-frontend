@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { MenuItem } from "./menu-item";
-import data from "../../data";
+// import data from "../../data";
 import SearchBar from "../search/search";
+import Loader from "../loader/loader";
+import PropTypes from "prop-types";
 
-const Menu = () => {
+const Menu = ({data, error, isLoading}) => {
 
     // Search Parameter for the filtered data
     const [searchParam, setSearchParam] = useState("");
 
     // Return the different state of the data loading or Error
-    // if(isLoading || error || !data) {
-    //    return( 
-    //         <div>
-    //             {isLoading ?  "Loading..." : error}
-    //         </div>
-    //    );
-    // }
+    if( isLoading || error || !data) {
+       return( 
+            <div>
+                {isLoading  ?  <Loader /> : error}
+            </div>
+       );
+    }
 
     // Getting the filtered data using the search Parameter
     const filteredData  = data.length >0 ? data.filter(pizza => pizza.name.toLowerCase().includes(searchParam.toLowerCase())) : [];
@@ -34,3 +36,10 @@ const Menu = () => {
     );
 };
 export default Menu;
+
+
+Menu.propTypes = {
+    data: PropTypes.array,
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    isLoading: PropTypes.bool
+};

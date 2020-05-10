@@ -88,7 +88,7 @@ export const NavBar = () => {
                                 </div>
                             </div>
                         </div>
-                        <button aria-pressed="false" role="button" type="button" onClick = {() => setIsOpen(!isOpen)} className='block text-white hover:text-white focus:text-white focus:outline-none sm:hidden '>
+                        <button aria-pressed="false"  type="button" onClick = {() => setIsOpen(!isOpen)} className='block text-white hover:text-white focus:text-white focus:outline-none sm:hidden '>
                         <svg className="  h-6 w-6 fill-current" viewBox="0 0 24 24">
                             {isOpen && <path fillRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>}
                             {!isOpen && <path  fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>}
@@ -98,7 +98,7 @@ export const NavBar = () => {
                 </div>
                 <nav className={`${isOpen? "block" : "hidden "} duration-500 px-2 pt-2 pb-4 sm:flex sm:p-0`}>
                     <NavLink exact activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/'>Home </NavLink>
-                    { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/orders'>Orders </NavLink>}
+                    { isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/orders'>Orders </NavLink>}
                     { isAuthenticated && <NavLink activeClassName="bg-green-400" onClick = {() => Logout()} className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/login'>logout </NavLink>}
                     { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/login'>Login </NavLink>}
                     { !isAuthenticated && <NavLink activeClassName="bg-green-400" className='block text-white px-2 py-1 font-semibold rounded hover:bg-green-400 mr-3' to='/signup'>Sign Up </NavLink>}

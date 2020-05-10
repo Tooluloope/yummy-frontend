@@ -1,8 +1,8 @@
 import React, {createContext, useReducer} from "react";
-import { addNewItem, removeItem, increaseItem,decreaseItem } from "./utils";
+import {removeAll, addNewItem, removeItem, increaseItem,decreaseItem, getStateFromLocalStorage } from "./utils";
 import PropTypes from "prop-types";
 
-const initialState = {
+const initialState = getStateFromLocalStorage() ? getStateFromLocalStorage() : {
   items: [],
   total:0
 };
@@ -21,8 +21,8 @@ const reducer = (state, action) => {
         return increaseItem(state, payload);
       case "REMOVE_ITEM": 
         return removeItem(state, payload);
-      case "REMOVE_ALL": 
-        return initialState;
+      case "REMOVE_ALL":
+        return removeAll(); 
         
       default:
        return state;
