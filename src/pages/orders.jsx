@@ -199,7 +199,7 @@ const Orders = () => {
                                         </td>}
                                         {selectedRows.includes("total") && <td className="border-dashed border-t border-gray-200 emailAddress ">
                                             <span className="text-gray-700 px-6 py-3 flex items-center"
-                                                > $ {order.total}</span>
+                                                > € {order.total}</span>
                                         </td>}
                                         {selectedRows.includes("created_at") && <td className="border-dashed border-t border-gray-200 gender">
                                             <span className="text-gray-700 px-6 py-3 flex items-center"

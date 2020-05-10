@@ -108,7 +108,7 @@ const getTotal = (arr, deliveryFee = 15 ) =>
     }, deliveryFee);
 
     // 1 USD  -->  0.926238 EUR
-export const usdToEuros = (amount) => parseFloat(amount * 0.926238).toFixed(2);
+export const eurosToUsd = (amount) => parseFloat(amount / 0.926238).toFixed(2);
 
 
 export const stateToLocalStorage = (key = "state", data) => {

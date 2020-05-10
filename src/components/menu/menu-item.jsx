@@ -19,7 +19,7 @@ export const MenuItem = ({pizza}) => {
         <div className=" text-center py-4 sm:w-1/2 md:w-1/3 px-4">
             <LazyLoadImage effect="blur" className=" h-auto m-auto" src={url} alt={name}/>
             <p className='font-semibold pt-4 pb-2'>{name}</p>
-            <p className="pb-2">$ {price}</p>
+            <p className="pb-2">€ {price}</p>
 
             <button onClick={handleClick} type='button' className=' focus:outline-none outline-none border duration-200 ease-in-out hover:border-green-600 transition hover:bg-white hover:text-green-600 bg-green-600 text-white uppercase p-4 text-xs'>Add to cart</button>
 

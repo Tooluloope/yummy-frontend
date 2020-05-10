@@ -6,7 +6,7 @@ import { userContext } from "../../states/auth/auth.context";
 import { Input, Button } from "../inputs/input";
 import { CartItem } from "./cart-item";
 import { cartContext } from "../../states/cart/cart";
-import {usdToEuros} from "../utils";
+import { eurosToUsd} from "../utils";
 import Axios from "axios";
 
 
@@ -49,6 +49,9 @@ export const NavBar = () => {
     const handleCheckOut = () => {
         setIsFormOpen(true);
     };
+
+
+
     const handleSubmit = async (e) => {
         setData({...data, submitting: true});
         e.preventDefault();
@@ -153,20 +156,20 @@ export const NavBar = () => {
                     <div className='flex px-2 pt-4 justify-between items-center' >
                         <p>Delivery</p>
                         <div>
-                            <p>$ 15</p>
+                            <p>€ 15</p>
                         </div>
                     </div>
                     <div className='flex px-2 py-4 justify-between items-center' >
                         <p>Total</p>
                         <div>
-                            <p>$ {parseFloat(state.total).toFixed(2)}</p>
-                            <p>€ {usdToEuros(state.total)}</p>
+                            <p>€ {parseFloat(state.total).toFixed(2)}</p>
+                            <p>$ {eurosToUsd(state.total)}</p>
                         </div>
 
                     </div>
                     
                     <div className="p-4 justify-center flex">
-                        <Button handleClick = {handleCheckOut} value={`Checkout $${parseFloat(state.total).toFixed(2)} `} type='button' />
+                        <Button handleClick = {handleCheckOut} value={`Checkout €${parseFloat(state.total).toFixed(2)} `} type='button' />
                         
                     </div>
                 </>) : null}
@@ -183,7 +186,7 @@ export const NavBar = () => {
                     {submitted && <p className='text-green-500 mb-2'>Checkout Successfully</p>}
                     {errors && <p className='text-red-500 mb-2'>{errors}</p>}
 
-                    <Input  readOnly  value = {`$ ${state.total}`}   name='amount' type='text' label='Amount' icon = 'credit-card'/>
+                    <Input  readOnly  value = {`€ ${state.total}`}   name='amount' type='text' label='Amount' icon = 'credit-card'/>
 
                     <Input onChange={handleChange} value = {name} name='name' type='text' label='Full Name' icon = 'address-book' required/>
                     
