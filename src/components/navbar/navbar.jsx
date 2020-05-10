@@ -7,11 +7,12 @@ import { Input, Button } from "../inputs/input";
 import { CartItem } from "./cart-item";
 import { cartContext } from "../../states/cart/cart";
 import {usdToEuros} from "../../states/cart/utils";
+import Axios from "axios";
 
 
 
 export const NavBar = () => {
-    const { state } = useContext(cartContext);
+    const { state, dispatch: cartDispatch } = useContext(cartContext);
     const [isOpen, setIsOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isFormOpen, setIsFormOpen] = useState(false);
@@ -24,8 +25,9 @@ export const NavBar = () => {
             email: "",
             address: ""
         },
-        errors: {},
-        submitted: false
+        errors: null,
+        submitted: false,
+        submitting: false
     };
     const [data, setData] = useState(initialState);
 
@@ -47,13 +49,30 @@ export const NavBar = () => {
     const handleCheckOut = () => {
         setIsFormOpen(true);
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        setData({...data, submitting: true});
         e.preventDefault();
         const { user } = data;
-        const body = {...user, total:state.total };
-        alert(JSON.stringify(body));
-        setIsFormOpen(false);
-        setIsCartOpen(false);
+        const ids = state.items.map(item => `https://yummy-pizzapi.herokuapp.com/api/pizzas/${item.id}/`);
+        const order = {...user, item:ids, total:state.total};
+        try {
+            await Axios.post("https://mypizzapps.herokuapp.com/api/orders/", order);
+            
+            cartDispatch({type: "REMOVE_ALL"});
+            setData({...data, errors: null, submitted: true});
+            setTimeout(() => {
+                setData(initialState);
+                setIsFormOpen(false);
+                setIsCartOpen(false);
+            }, 1000);
+
+        } catch (error) {
+            setData({...data, errors: error.toString()});
+        }
+        
+
+        
+        
     };
     const handleChange = event => {
         const { user } = data;
@@ -62,7 +81,7 @@ export const NavBar = () => {
     };
 
     // Remember to take care of {submitted, errors,}
-    const { user: { name, address, email }} = data;
+    const {submitting, submitted, errors, user: { name, address, email }} = data;
     const enabled = name.length > 0 && address.length > 0 && email.length > 0;
 
 
@@ -161,8 +180,8 @@ export const NavBar = () => {
                     
                 </div>
                 <form className="sm:w-85 m-auto w-64">
-                    {/* {submitted && <p className='text-green-500 mb-2'>Registered Successfully</p>}
-                    {errors && <p className='text-red-500 mb-2'>{errors.message}</p>} */}
+                    {submitted && <p className='text-green-500 mb-2'>Checkout Successfully</p>}
+                    {errors && <p className='text-red-500 mb-2'>{errors}</p>}
 
                     <Input  readOnly  value = {`$ ${state.total}`}   name='amount' type='text' label='Amount' icon = 'credit-card'/>
 
@@ -173,7 +192,9 @@ export const NavBar = () => {
                     <Input onChange={handleChange} value = {address}    name='address' type='text' label='Address' icon = 'map-marker' required/>
 
 
-                    <Button handleClick = {handleSubmit} value="Submit &rarr;" type='submit' disabled={!enabled} />
+                    <Button handleClick = {handleSubmit} value="Submit" type='submit' disabled={!enabled}>
+                        {submitting && <span className='pl-2'><i className="fas fa-spinner"></i></span>}
+                    </Button>
 
 
                 </form>
