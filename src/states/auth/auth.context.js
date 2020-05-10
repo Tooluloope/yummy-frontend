@@ -1,9 +1,10 @@
 import React, {createContext, useReducer} from "react";
 import PropTypes from "prop-types";
+import { getStateFromLocalStorage,removeStateFromLocalStorage, stateToLocalStorage } from "../../components/utils";
 
 
 
-const initialState = {
+const initialState = getStateFromLocalStorage("user") ? getStateFromLocalStorage("user") : {
     user: null,
     isAuthenticated: false,
     token: localStorage.getItem("token"),
@@ -16,6 +17,7 @@ const reducer = (state, action) => {
     const { type, payload } = action;
     switch (type) {
           case "LOGOUT_SUCCESS":
+            removeStateFromLocalStorage("user");
             localStorage.removeItem("token");
             localStorage.removeItem("isAuthenticated", JSON.stringify(false));
             return {
@@ -24,6 +26,7 @@ const reducer = (state, action) => {
               user: null,
             };
         case "LOGIN_SUCCESS":
+          stateToLocalStorage("user", payload);
           localStorage.setItem("token", payload.token);
           localStorage.setItem("isAuthenticated", JSON.stringify(true));
           return {
@@ -32,7 +35,8 @@ const reducer = (state, action) => {
             isAuthenticated: true,
             ...payload
           };
-          case "REGISTER_SUCCESS":
+        case "REGISTER_SUCCESS":
+          stateToLocalStorage("user", payload);
           localStorage.setItem("token", payload.token);
           localStorage.setItem("isAuthenticated", JSON.stringify(true));
           return {
@@ -44,7 +48,7 @@ const reducer = (state, action) => {
         case "AUTH_ERROR":
         case "REGISTER_FAIL":
         case "LOGIN_FAIL":
-            
+          removeStateFromLocalStorage("user");
           localStorage.removeItem("token");
           localStorage.removeItem("isAuthenticated", JSON.stringify(false));
           return {

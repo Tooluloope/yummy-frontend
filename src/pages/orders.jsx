@@ -40,8 +40,9 @@ export const headings = [
 ];
 
 const Orders = () => {
+
     let myHeaders = new Headers();
-    myHeaders.append("Authorization", "Token 6c0188d222527cae34b8f1943c8af2d7ee11ed8c71ec27cd412d3e84790d713f");
+    myHeaders.append("Authorization", `Token ${localStorage.getItem("token")}`);
     const requestOptions = {
     method: "GET",
     headers: myHeaders,

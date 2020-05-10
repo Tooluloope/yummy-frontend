@@ -5,6 +5,7 @@ import { Store } from "../states/cart/cart";
 import { Route} from "react-router-dom";
 import useFetch from "../hooks/fetch";
 import Loader from "../components/loader/loader";
+import { AuthenticatedRoute } from "../components/routes/authenticatedRoutes";
 
 const Orders = React.lazy(() => import("./orders"));
 const Menu = React.lazy(() => import("../components/menu/menu"));
@@ -18,9 +19,9 @@ export const Home = () =>{
     <Suspense fallback={<Loader />}>
     <Store>
         <NavBar />
-            <Route exact path="/orders">
+            <AuthenticatedRoute exact path="/orders">
                 <Orders  />
-            </Route>
+            </AuthenticatedRoute>
             <Route exact path="/">
                 <Menu data={data} error={error} isLoading={isLoading} />
             </Route>

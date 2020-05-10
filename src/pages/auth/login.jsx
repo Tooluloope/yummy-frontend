@@ -59,7 +59,7 @@ export const Login = () => {
      
         try {
             
-            const res = await axios.post("http://localhost:5000/signin", data.user );
+            const res = await axios.post("https://yummy-pizzapi.herokuapp.com/auth/login", data.user );
             const status = res.status;
             const result = await res.data;
 

@@ -111,19 +111,19 @@ const getTotal = (arr, deliveryFee = 15 ) =>
 export const usdToEuros = (amount) => parseFloat(amount * 0.926238).toFixed(2);
 
 
-const stateToLocalStorage = (data) => {
-    localStorage.setItem("state", JSON.stringify(data));
+export const stateToLocalStorage = (key = "state", data) => {
+    localStorage.setItem(key, JSON.stringify(data));
 };
 
 
 
-const removeStateFromLocalStorage = () => localStorage.removeItem("state");
+export const removeStateFromLocalStorage = (key = "state") => localStorage.removeItem(key);
 
 
 
-export const getStateFromLocalStorage = () => {
+export const getStateFromLocalStorage = (key = "state") => {
 
-    const data = JSON.parse(localStorage.getItem("state"));
+    const data = JSON.parse(localStorage.getItem(key));
     return data;
 };
 
