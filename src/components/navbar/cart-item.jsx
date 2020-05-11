@@ -21,7 +21,7 @@ export const CartItem = ({item}) => {
     };
     return(
         <div className="px-2 py-4 flex bg-white hover:bg-gray-100 cursor-pointer border-b border-gray-100" >
-            <div className="p-2 w-12"><img className="" src={url} alt="img product" /></div>
+            <div className="p-2 w-12"><img  className="" src={url} alt="img product" /></div>
             <div className="flex-auto text-sm w-32">
                 <div className="font-bold truncate">{name}</div>
                 <div className="truncate">{desc}</div>
