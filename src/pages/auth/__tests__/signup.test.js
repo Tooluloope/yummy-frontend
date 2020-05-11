@@ -64,6 +64,7 @@ it("Text if Alert is changed when button clicked and no Input", () => {
     fireEvent.change(password2, { target: { value: "12345679" } });
     fireEvent.change(username, { target: { value: "123" } });
     fireEvent.click(button);
+    
 
     expect(error.textContent).toBe("Both Passwords must be the same");
  });

@@ -11,7 +11,10 @@ import { userContext } from "../../states/auth/auth.context";
 
 
 
+
+
 export const Login = () => {
+
     // Initial State of the app during login
     const initialState = {
         user: {

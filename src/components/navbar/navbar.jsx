@@ -145,9 +145,9 @@ export const NavBar = () => {
                     </button>
                 </div>
                 {state.items.length > 0 ? state.items.map(item => <CartItem key={item.name} item={item} />) :
-                <div>
+                <div >
                     <i className="fas fa-cart-arrow-down"></i>
-                    <p>No Product in this cart</p>
+                    <p data-testid="no-product">No Product in this cart</p>
                 </div>
                 }
                 

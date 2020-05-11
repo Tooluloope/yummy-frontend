@@ -2,14 +2,14 @@ import React, {createContext, useReducer} from "react";
 import {removeAll, addNewItem, removeItem, increaseItem,decreaseItem, getStateFromLocalStorage } from "../../components/utils";
 import PropTypes from "prop-types";
 
-const initialState = getStateFromLocalStorage() ? getStateFromLocalStorage() : {
+export const initialState = getStateFromLocalStorage() ? getStateFromLocalStorage() : {
   items: [],
   total:0
 };
 
 export const cartContext = createContext(initialState);
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
     
     const { payload } = action;
     switch (action.type) {
