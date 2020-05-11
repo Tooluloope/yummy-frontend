@@ -95,7 +95,7 @@ export const SignUp = () => {
 
                 <div className=' content  h-full flex justify-start items-center text-center'>
                     <form style={{width: "360px"}}>
-                        <img src={profile} alt="profile" className='h-24 m-auto'/>
+                        <img src={profile} alt="profile" className='h-24 m-auto mt-4'/>
                         <h2 className='text-center mt-4 mb-4 ml-0 mr-0 uppercase text-5xl'>Welcome</h2>
                         {submitted && <p data-testid= "submitted" className='text-green-500 mb-2'>Registered Successfully</p>}
                         {errors && <p data-testid= "error" className='text-red-500 mb-2'>{errors.message}</p>}
@@ -112,7 +112,7 @@ export const SignUp = () => {
 
                         <Link className="block text-right no-underline text-gray-500 duration-300 hover:text-green-300" to="/login">Alread a User? Sign In</Link>
                         
-                        <ButtonAuth  className='text-xl text-white uppercase cursor-pointer  mt-1 block w-full h-12 outline-none border-none bg-green-500' value='Sign up' type="submit" handleClick={onSubmit} disabled={!enabled} />
+                        <ButtonAuth  className='text-xl text-white uppercase cursor-pointer mb-4 mt-1 block w-full h-12 outline-none border-none bg-green-500' value='Sign up' type="submit" handleClick={onSubmit} disabled={!enabled} />
 
                     </form>
                 </div>
