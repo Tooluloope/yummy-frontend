@@ -3,11 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-export const ButtonAuth = ({value, className, type,handleClick } ) => {
+export const ButtonAuth = ({value, className, type,handleClick, ...props } ) => {
 
     return(
         
-        <input aria-pressed="false" role="button"   style={{borderRadius: "25px"}} type={type} className={className}  onClick={handleClick} value={value}></input>
+        <input {...props} aria-pressed="false" role="button"   style={{borderRadius: "25px"}} type={type} className={className}  onClick={handleClick} value={value}></input>
     );
 };
 

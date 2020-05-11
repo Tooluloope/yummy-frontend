@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly react-test-renderer 1`] = `
+<BrowserRouter>
+  <Switch>
+    <UnAuthenticatedRoute
+      path="/login"
+    >
+      <Login />
+    </UnAuthenticatedRoute>
+    <UnAuthenticatedRoute
+      path="/signup"
+    >
+      <SignUp />
+    </UnAuthenticatedRoute>
+    <Route>
+      <Home
+        exact={true}
+        path="/"
+      />
+    </Route>
+  </Switch>
+</BrowserRouter>
+`;

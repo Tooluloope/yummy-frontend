@@ -80,7 +80,8 @@ export const SignUp = () => {
     };
 
     const {submitted, errors, user: { username, password, fullname, email, password2 }} = data;
-    
+    const enabled = email.length > 0 && password.length > 0 && username.length > 0 && password2.length > 0 && fullname.length > 0;
+
     return(
     <>
         <img style={{zIndex: "-1"}} src={wave} alt="wave" className="fixed bottom-0 left-0  h-full wave"/>
@@ -96,22 +97,22 @@ export const SignUp = () => {
                     <form style={{width: "360px"}}>
                         <img src={profile} alt="profile" className='h-24 m-auto'/>
                         <h2 className='text-center mt-4 mb-4 ml-0 mr-0 uppercase text-5xl'>Welcome</h2>
-                        {submitted && <p className='text-green-500 mb-2'>Registered Successfully</p>}
-                        {errors && <p className='text-red-500 mb-2'>{errors.message}</p>}
+                        {submitted && <p data-testid= "submitted" className='text-green-500 mb-2'>Registered Successfully</p>}
+                        {errors && <p data-testid= "error" className='text-red-500 mb-2'>{errors.message}</p>}
 
-                        <Input error={errors.fullname}  onChange={handleChange} value={fullname}   name='fullname' type='text' label='Fullname' icon = 'address-book' required/>
+                        <Input data-testid= "fullname"   onChange={handleChange} value={fullname}   name='fullname' type='text' label='Fullname' icon = 'address-book' required/>
 
-                        <Input error={errors.username}  onChange={handleChange} value={username}   name='username' type='text' label='Username' icon = 'user' required/>
+                        <Input data-testid= "username"   onChange={handleChange} value={username}   name='username' type='text' label='Username' icon = 'user' required/>
                         
-                        <Input error={errors.email}    onChange={handleChange} value={email}   name='email' type='text' label='Email Address' icon = 'at' required/>
+                        <Input data-testid= "email"     onChange={handleChange} value={email}   name='email' type='text' label='Email Address' icon = 'at' required/>
                     
-                        <Input error={errors.password}  onChange={handleChange} value={password} name='password' type='password' label='Password' icon = 'lock' required/>
+                        <Input data-testid= "password"   onChange={handleChange} value={password} name='password' type='password' label='Password' icon = 'lock' required/>
 
-                        <Input error={errors.password2} onChange={handleChange} value={password2} name='password2' type='password' label='Check Password' icon = 'lock' required/>
+                        <Input data-testid= "password2"  onChange={handleChange} value={password2} name='password2' type='password' label='Check Password' icon = 'lock' required/>
 
                         <Link className="block text-right no-underline text-gray-500 duration-300 hover:text-green-300" to="/login">Alread a User? Sign In</Link>
                         
-                        <ButtonAuth  className='text-xl text-white uppercase cursor-pointer  mt-1 block w-full h-12 outline-none border-none bg-green-500' value='Sign up' type="submit" handleClick={onSubmit} />
+                        <ButtonAuth  className='text-xl text-white uppercase cursor-pointer  mt-1 block w-full h-12 outline-none border-none bg-green-500' value='Sign up' type="submit" handleClick={onSubmit} disabled={!enabled} />
 
                     </form>
                 </div>
