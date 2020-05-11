@@ -92,7 +92,7 @@ export const Login = () => {
                 </div>
 
                 <div className='  h-full flex justify-start items-center text-center content'>
-                    <form style={{width: "360px"}}>
+                    <form data-testid="custom-element" style={{width: "360px"}}>
                         <img src={profile} alt="profile" className='h-24 m-auto'/>
                         <h2 className='text-center mt-4 mb-4 ml-0 mr-0 uppercase text-5xl'>Welcome</h2>
                         {submitted && <p className='text-green-500 mb-2'>Login Successfully</p>}
