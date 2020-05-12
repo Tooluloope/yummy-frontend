@@ -185,7 +185,7 @@ const Orders = () => {
                                             </label>
                                         </td>
                                         {selectedRows.includes("id") && <td className="border-dashed border-t border-gray-200 userId">
-                                            <Link className="text-gray-700 px-6 py-3 flex items-center" to={`${order.id}`} >{order.id}</Link>
+                                            <Link className="text-gray-700 px-6 py-3 flex items-center" to={`orders/${order.id}`} >{order.id}</Link>
                                         </td>}
                                         {selectedRows.includes("name") &&<td className="border-dashed border-t border-gray-200 phoneNumber">
                                             <span className="text-gray-700 px-6 py-3 flex items-center"
