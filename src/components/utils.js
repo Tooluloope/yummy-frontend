@@ -17,7 +17,7 @@ export const addNewItem = (state, item) => {
     }
     const {items} = data;
     const total = getTotal(items);
-    stateToLocalStorage({items, total});
+    stateToLocalStorage("state", {items, total});
     return {items, total};   
 };
 
@@ -45,7 +45,7 @@ export const decreaseItem = (state, item) => {
     const {items} = data;
     let deliveryFee = items.length < 1 ? 0 : 15;
     const total = getTotal(items, deliveryFee);
-    stateToLocalStorage({items, total});
+    stateToLocalStorage("state",{items, total});
     return {items, total}; 
 
 };
@@ -64,7 +64,7 @@ export const increaseItem = (state, item) => {
 
     const {items} = data;
     const total = getTotal(items);
-    stateToLocalStorage({items, total});
+    stateToLocalStorage("state",{items, total});
     return {items, total}; 
 
 
@@ -82,7 +82,7 @@ export const removeItem = (state, item)=> {
     let deliveryFee = items.length < 1 ? 0 : 15;
     
     const total = getTotal(items, deliveryFee);
-    stateToLocalStorage({items, total});
+    stateToLocalStorage("state", {items, total});
     return {items, total};
 
 };

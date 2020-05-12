@@ -3,6 +3,7 @@ import "./order.css";
 import useFetch from "../hooks/fetch";
 import Loader from "../components/loader/loader";
 import { formatDate } from "../components/utils";
+import { Link } from "react-router-dom";
 
 
 export const headings = [
@@ -184,7 +185,7 @@ const Orders = () => {
                                             </label>
                                         </td>
                                         {selectedRows.includes("id") && <td className="border-dashed border-t border-gray-200 userId">
-                                            <span className="text-gray-700 px-6 py-3 flex items-center" >{order.id}</span>
+                                            <Link className="text-gray-700 px-6 py-3 flex items-center" to={`${order.id}`} >{order.id}</Link>
                                         </td>}
                                         {selectedRows.includes("name") &&<td className="border-dashed border-t border-gray-200 phoneNumber">
                                             <span className="text-gray-700 px-6 py-3 flex items-center"
