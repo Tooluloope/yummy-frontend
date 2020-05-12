@@ -21,6 +21,10 @@ export const addNewItem = (state, item) => {
     return {items, total};   
 };
 
+
+
+
+
 export const decreaseItem = (state, item) => {
     let data = Object.create(state);
     // Check if item in cart
@@ -50,6 +54,11 @@ export const decreaseItem = (state, item) => {
 
 };
 
+
+
+
+
+
 export const increaseItem = (state, item) => {
     let data = Object.create(state);
     // Check if item in cart
@@ -70,6 +79,11 @@ export const increaseItem = (state, item) => {
 
 };
 
+
+
+
+
+
 export const removeItem = (state, item)=> {
     
 
@@ -86,6 +100,12 @@ export const removeItem = (state, item)=> {
     return {items, total};
 
 };
+
+
+
+
+
+
 export const removeAll = () => {
 
     removeStateFromLocalStorage();
@@ -106,8 +126,16 @@ const getTotal = (arr, deliveryFee = 15 ) =>
 
     }, deliveryFee);
 
+
+
+
+
     // 1 USD  -->  0.926238 EUR
 export const eurosToUsd = (amount) => parseFloat(amount / 0.926238).toFixed(2);
+
+
+
+
 
 
 export const stateToLocalStorage = (key = "state", data) => {
@@ -116,7 +144,11 @@ export const stateToLocalStorage = (key = "state", data) => {
 
 
 
+
+
 export const removeStateFromLocalStorage = (key = "state") => localStorage.removeItem(key);
+
+
 
 
 
@@ -125,6 +157,10 @@ export const getStateFromLocalStorage = (key = "state") => {
     const data = JSON.parse(localStorage.getItem(key));
     return data;
 };
+
+
+
+
 
 export const formatDate = (date) => {
     var d = new Date(date),
