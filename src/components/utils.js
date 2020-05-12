@@ -16,7 +16,6 @@ export const addNewItem = (state, item) => {
         data.items = [...data.items, {...result, amount: 1} ];
     }
     const {items} = data;
-    console.log(items);
     const total = getTotal(items);
     stateToLocalStorage({items, total});
     return {items, total};   
