@@ -1,0 +1,22 @@
+.hover-menu:hover .hover-item {
+    height: 100%;
+    background-color: rgba(0,0,0, 0.3);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 300ms;
+}
+.hover-menu:hover{
+    transition: all ease-in-out 300ms;
+}
+
+.hover-menu:hover .hover-button {
+    z-index: 50;
+    opacity: 1;
+    transition: all ease-in-out 300ms;
+}
+
+.but {
+    text-transform:none;
+}
