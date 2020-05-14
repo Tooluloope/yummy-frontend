@@ -14,7 +14,7 @@ export const OrderItem = ({id , pizzas}) => {
                         <div style={{height:"350px"}} className=" overflow-hidden">
                             <LazyLoadImage  effect="blur" className=" h-auto m-auto" src={url} alt={name}/>
                         </div>
-                        <div className="absolute bottom-0  w-full bg-green-200 right-0 text-left pl-4">
+                        <div className="absolute bottom-0  w-full bg-gray-200 right-0 text-left pl-4">
                             <p className='font-semibold pt-4 pb-2'>{name}</p>
                             <span className="text-sm font-thin">{desc}</span>
                             <p className="pb-2 pt-2 font-semibold text-lg">€ {price}</p>

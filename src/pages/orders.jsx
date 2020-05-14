@@ -63,7 +63,6 @@ const Orders = () => {
              </div>
         );
     }
-    console.log(data)
     const filteredData  = data.length >0 ? data.filter(pizza => pizza.name.toLowerCase().includes(searchParam.toLowerCase())) : [];
 
 
